@@ -1,8 +1,8 @@
-prefix=/home/student/catkin_ws/devel
+prefix=/home/yongyang/Developer/LearnROS/devel
 
 Name: first_package
 Description: Description of first_package
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/student/catkin_ws/devel/lib 
+Libs: -L/home/yongyang/Developer/LearnROS/devel/lib 
 Requires: 

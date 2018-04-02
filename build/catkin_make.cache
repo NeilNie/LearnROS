@@ -1,2 +1,2 @@
-first_package:simple_arm
--DCATKIN_DEVEL_PREFIX=/home/student/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/student/catkin_ws/install -G Unix Makefiles
+first_package:simple-arm
+-DCATKIN_DEVEL_PREFIX=/home/yongyang/Developer/LearnROS/devel -DCMAKE_INSTALL_PREFIX=/home/yongyang/Developer/LearnROS/install -G Unix Makefiles

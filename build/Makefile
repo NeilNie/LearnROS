@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/yongyang/Developer/LearnROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/catkin_ws/build
+CMAKE_BINARY_DIR = /home/yongyang/Developer/LearnROS/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/catkin_ws/build/CMakeFiles /home/student/catkin_ws/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yongyang/Developer/LearnROS/build/CMakeFiles /home/yongyang/Developer/LearnROS/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/catkin_ws/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yongyang/Developer/LearnROS/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -231,6 +231,32 @@ doxygen/fast:
 .PHONY : doxygen/fast
 
 #=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) -f gtest/CMakeFiles/gmock.dir/build.make gtest/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) -f gtest/CMakeFiles/gmock_main.dir/build.make gtest/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
 # Target rules for targets named gtest
 
 # Build rule for target.
@@ -240,7 +266,7 @@ gtest: cmake_check_build_system
 
 # fast build rule for target.
 gtest/fast:
-	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
+	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
 #=============================================================================
@@ -253,7 +279,7 @@ gtest_main: cmake_check_build_system
 
 # fast build rule for target.
 gtest_main/fast:
-	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
+	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
 #=============================================================================
@@ -279,7 +305,7 @@ roscpp_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_eus/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
@@ -292,7 +318,7 @@ controller_manager_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 controller_manager_msgs_generate_messages_py/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build
 .PHONY : controller_manager_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -305,7 +331,7 @@ roscpp_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_cpp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
@@ -318,7 +344,7 @@ controller_manager_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 controller_manager_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
 .PHONY : controller_manager_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -331,7 +357,7 @@ std_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -344,7 +370,7 @@ controller_manager_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 controller_manager_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build
 .PHONY : controller_manager_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -357,7 +383,7 @@ roscpp_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_lisp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
 
 #=============================================================================
@@ -370,7 +396,7 @@ std_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_eus/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 .PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -383,7 +409,7 @@ roscpp_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_py/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_py.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_py.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
 
 #=============================================================================
@@ -396,7 +422,7 @@ rosgraph_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_eus/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -409,7 +435,7 @@ std_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -422,7 +448,7 @@ std_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_py/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -435,7 +461,7 @@ controller_manager_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 controller_manager_msgs_generate_messages_eus/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build
 .PHONY : controller_manager_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -448,7 +474,7 @@ std_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 std_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -461,7 +487,7 @@ rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -474,7 +500,7 @@ rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -487,7 +513,7 @@ roscpp_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_nodejs/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -500,7 +526,7 @@ rosgraph_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_py/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -513,7 +539,7 @@ rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make simple_arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -526,7 +552,7 @@ controller_manager_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 controller_manager_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build
 .PHONY : controller_manager_msgs_generate_messages_nodejs/fast
 
 # Help Target
@@ -547,6 +573,8 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... test"
+	@echo "... gmock"
+	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... _catkin_empty_exported_target"

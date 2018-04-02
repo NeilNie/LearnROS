@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/yongyang/Developer/LearnROS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/catkin_ws/build
+CMAKE_BINARY_DIR = /home/yongyang/Developer/LearnROS/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ first_package/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_
 .PHONY : first_package/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 first_package/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/student/catkin_ws/build/first_package && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/yongyang/Developer/LearnROS/build/first_package && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : first_package/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 first_package/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/student/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/catkin_ws/src /home/student/catkin_ws/src/first_package /home/student/catkin_ws/build /home/student/catkin_ws/build/first_package /home/student/catkin_ws/build/first_package/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yongyang/Developer/LearnROS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yongyang/Developer/LearnROS/src /home/yongyang/Developer/LearnROS/src/first_package /home/yongyang/Developer/LearnROS/build /home/yongyang/Developer/LearnROS/build/first_package /home/yongyang/Developer/LearnROS/build/first_package/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : first_package/CMakeFiles/_catkin_empty_exported_target.dir/depend
 
