@@ -66,38 +66,16 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/local
+install/local/fast: install/local
 
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
@@ -111,6 +89,17 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -122,16 +111,27 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install/local
-install/local/fast: install/local
+# Special rule for the target test
+test/fast: test
 
-.PHONY : install/local/fast
+.PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,199 +166,94 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+simple-arm/CMakeFiles/simple_arm_gencpp.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_gencpp.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_gencpp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+simple_arm_gencpp: simple-arm/CMakeFiles/simple_arm_gencpp.dir/rule
 
-.PHONY : roscpp_generate_messages_eus
+.PHONY : simple_arm_gencpp
 
 # fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
+simple_arm_gencpp/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_gencpp.dir/build.make simple-arm/CMakeFiles/simple_arm_gencpp.dir/build
+.PHONY : simple_arm_gencpp/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/rule
-.PHONY : simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/rule
+simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-controller_manager_msgs_generate_messages_py: simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/rule
+simple_arm_generate_messages_cpp: simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
 
-.PHONY : controller_manager_msgs_generate_messages_py
+.PHONY : simple_arm_generate_messages_cpp
 
 # fast build rule for target.
-controller_manager_msgs_generate_messages_py/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/build
-.PHONY : controller_manager_msgs_generate_messages_py/fast
+simple_arm_generate_messages_cpp/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/build
+.PHONY : simple_arm_generate_messages_cpp/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+simple_arm_generate_messages_nodejs: simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
 
-.PHONY : roscpp_generate_messages_cpp
+.PHONY : simple_arm_generate_messages_nodejs
 
 # fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
+simple_arm_generate_messages_nodejs/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/build
+.PHONY : simple_arm_generate_messages_nodejs/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule
-.PHONY : simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule
+simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
+.PHONY : simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
 
 # Convenience name for target.
-controller_manager_msgs_generate_messages_cpp: simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule
+_simple_arm_generate_messages_check_deps_GoToPosition: simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
 
-.PHONY : controller_manager_msgs_generate_messages_cpp
+.PHONY : _simple_arm_generate_messages_check_deps_GoToPosition
 
 # fast build rule for target.
-controller_manager_msgs_generate_messages_cpp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
-.PHONY : controller_manager_msgs_generate_messages_cpp/fast
+_simple_arm_generate_messages_check_deps_GoToPosition/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/build.make simple-arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/build
+.PHONY : _simple_arm_generate_messages_check_deps_GoToPosition/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_nodejs: simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+simple_arm_generate_messages_eus: simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
 
-.PHONY : std_msgs_generate_messages_nodejs
+.PHONY : simple_arm_generate_messages_eus
 
 # fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
+simple_arm_generate_messages_eus/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages_eus.dir/build
+.PHONY : simple_arm_generate_messages_eus/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule
+simple-arm/CMakeFiles/simple_arm_genlisp.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_genlisp.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_genlisp.dir/rule
 
 # Convenience name for target.
-controller_manager_msgs_generate_messages_lisp: simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule
+simple_arm_genlisp: simple-arm/CMakeFiles/simple_arm_genlisp.dir/rule
 
-.PHONY : controller_manager_msgs_generate_messages_lisp
+.PHONY : simple_arm_genlisp
 
 # fast build rule for target.
-controller_manager_msgs_generate_messages_lisp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/build
-.PHONY : controller_manager_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/rule
-.PHONY : simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-controller_manager_msgs_generate_messages_eus: simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/rule
-
-.PHONY : controller_manager_msgs_generate_messages_eus
-
-# fast build rule for target.
-controller_manager_msgs_generate_messages_eus/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/build
-.PHONY : controller_manager_msgs_generate_messages_eus/fast
+simple_arm_genlisp/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_genlisp.dir/build.make simple-arm/CMakeFiles/simple_arm_genlisp.dir/build
+.PHONY : simple_arm_genlisp/fast
 
 # Convenience name for target.
 simple-arm/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
@@ -376,94 +271,154 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+simple-arm/CMakeFiles/simple_arm_generate_messages.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+simple_arm_generate_messages: simple-arm/CMakeFiles/simple_arm_generate_messages.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_cpp
+.PHONY : simple_arm_generate_messages
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+simple_arm_generate_messages/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages.dir/build
+.PHONY : simple_arm_generate_messages/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_eus: simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_eus
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+std_msgs_generate_messages_eus/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_nodejs: simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_lisp: simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : roscpp_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_lisp
 
 # fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
+std_msgs_generate_messages_lisp/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+simple-arm/CMakeFiles/simple_arm_gennodejs.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_gennodejs.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_gennodejs.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_py: simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+simple_arm_gennodejs: simple-arm/CMakeFiles/simple_arm_gennodejs.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_py
+.PHONY : simple_arm_gennodejs
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
+simple_arm_gennodejs/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_gennodejs.dir/build.make simple-arm/CMakeFiles/simple_arm_gennodejs.dir/build
+.PHONY : simple_arm_gennodejs/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+std_msgs_generate_messages_py: simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_py
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+std_msgs_generate_messages_py/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/rule
+simple-arm/CMakeFiles/simple_arm_genpy.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_genpy.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_genpy.dir/rule
 
 # Convenience name for target.
-controller_manager_msgs_generate_messages_nodejs: simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/rule
+simple_arm_genpy: simple-arm/CMakeFiles/simple_arm_genpy.dir/rule
 
-.PHONY : controller_manager_msgs_generate_messages_nodejs
+.PHONY : simple_arm_genpy
 
 # fast build rule for target.
-controller_manager_msgs_generate_messages_nodejs/fast:
-	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/controller_manager_msgs_generate_messages_nodejs.dir/build
-.PHONY : controller_manager_msgs_generate_messages_nodejs/fast
+simple_arm_genpy/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_genpy.dir/build.make simple-arm/CMakeFiles/simple_arm_genpy.dir/build
+.PHONY : simple_arm_genpy/fast
+
+# Convenience name for target.
+simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_nodejs: simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make simple-arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_lisp: simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+
+.PHONY : simple_arm_generate_messages_lisp
+
+# fast build rule for target.
+simple_arm_generate_messages_lisp/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/build
+.PHONY : simple_arm_generate_messages_lisp/fast
+
+# Convenience name for target.
+simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_py: simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+
+.PHONY : simple_arm_generate_messages_py
+
+# fast build rule for target.
+simple_arm_generate_messages_py/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/build.make simple-arm/CMakeFiles/simple_arm_generate_messages_py.dir/build
+.PHONY : simple_arm_generate_messages_py/fast
+
+# Convenience name for target.
+simple-arm/CMakeFiles/simple_arm_geneus.dir/rule:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f CMakeFiles/Makefile2 simple-arm/CMakeFiles/simple_arm_geneus.dir/rule
+.PHONY : simple-arm/CMakeFiles/simple_arm_geneus.dir/rule
+
+# Convenience name for target.
+simple_arm_geneus: simple-arm/CMakeFiles/simple_arm_geneus.dir/rule
+
+.PHONY : simple_arm_geneus
+
+# fast build rule for target.
+simple_arm_geneus/fast:
+	cd /home/yongyang/Developer/LearnROS/build && $(MAKE) -f simple-arm/CMakeFiles/simple_arm_geneus.dir/build.make simple-arm/CMakeFiles/simple_arm_geneus.dir/build
+.PHONY : simple_arm_geneus/fast
 
 # Help Target
 help:
@@ -472,32 +427,29 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... list_install_components"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... controller_manager_msgs_generate_messages_py"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... install"
-	@echo "... controller_manager_msgs_generate_messages_cpp"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... controller_manager_msgs_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... controller_manager_msgs_generate_messages_eus"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... controller_manager_msgs_generate_messages_nodejs"
-	@echo "... install/strip"
+	@echo "... simple_arm_gencpp"
+	@echo "... simple_arm_generate_messages_cpp"
+	@echo "... simple_arm_generate_messages_nodejs"
 	@echo "... install/local"
+	@echo "... _simple_arm_generate_messages_check_deps_GoToPosition"
+	@echo "... simple_arm_generate_messages_eus"
+	@echo "... simple_arm_genlisp"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... simple_arm_generate_messages"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... simple_arm_gennodejs"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... simple_arm_genpy"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... simple_arm_generate_messages_lisp"
+	@echo "... install"
+	@echo "... simple_arm_generate_messages_py"
+	@echo "... rebuild_cache"
+	@echo "... simple_arm_geneus"
+	@echo "... install/strip"
+	@echo "... test"
+	@echo "... edit_cache"
 .PHONY : help
 
 

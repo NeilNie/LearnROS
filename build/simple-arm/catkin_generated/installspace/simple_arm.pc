@@ -3,6 +3,6 @@ prefix=/home/yongyang/Developer/LearnROS/install
 Name: simple_arm
 Description: Description of simple_arm
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/yongyang/Developer/LearnROS/install/include
 Libs: -L/home/yongyang/Developer/LearnROS/install/lib 
 Requires: 
